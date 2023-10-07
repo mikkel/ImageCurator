@@ -29,7 +29,7 @@ Favorite or delete images in a directory. Best when combined with stable diffusi
 To run ImageCurator:
 
 ```
-python main.py [source_directory] [destination_directory] [upscale_source_directory(optional)] [upscale_destination_directory(optional)]
+python imgserve.py [source_directory] [destination_directory] [upscale_source_directory(optional)] [upscale_destination_directory(optional)]
 ```
 
 if the upscale directories are specified, the name of the file must be the same (e.g. img/1.png has img-upscale/1.png)
@@ -42,7 +42,7 @@ Arguments:
 
 For example:
 
-```python main.py ./generated_images ./curated_images```
+```python imgserve.py ./generated_images ./curated_images```
 
 
 Open your browser and navigate to `http://localhost:8666/` to start curating your images.
