@@ -47,18 +47,43 @@
             background-color: red;
             color: white;
         }
+        tr.htmx-request {
+            transition: all 500ms ease-in;
+            background-color:red; // for example
+        }
+        #image-counter {
+            font-size: 20px;
+            color: #4CAF50; /* Green color for visibility */
+            font-weight: bold;
+            margin-bottom: 20px; /* Spacing from the first image */
+            padding: 10px;
+            border-radius: 5px;
+            background-color: #333; /* Dark background */
+            text-align: center;
+            width: 200px;
+            margin: auto; /* Center the counter */
+        }
     </style>
     <script>
+
         function hideImage(imgId) {
             document.getElementById(imgId).style.display = 'none';
+            // Decrement the counter
+            var counterElement = document.getElementById('image-counter');
+            var currentCount = parseInt(counterElement.innerHTML.split(": ")[1]);
+            counterElement.innerHTML = "Total Images: " + (currentCount - 1);
         }
     </script>
+    <script src="/assets/htmx.org@1.9.9" integrity="sha384-QFjmbokDn2DjBjq+fM+8LUIVrAgqcNW2s0PjAxHETgRn9l4fvX31ZxDxvwQnyMOX" crossorigin="anonymous"></script>
+
 </head>
 <body>
+    <div id="image-counter">Total Images: {{ img_files|length }}</div>
+
     {% for img_file in img_files %}
     <div class="img-container" id="{{ img_file[1:] }}">
         <img src="{{ img_file }}" loading="lazy">
-        <form method="POST">
+        <form hx-post="/" hx-indicator="closest div">
             <button class="fav" type="submit" name="fav_img" value="{{ img_file[1:] }}" onclick="hideImage('{{ img_file[1:] }}')">Favorite</button>
             <button class="delete" type="submit" name="delete_img" value="{{ img_file[1:] }}" onclick="hideImage('{{ img_file[1:] }}')">Delete</button>
         </form>
