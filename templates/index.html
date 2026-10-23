@@ -84,6 +84,7 @@
     <div class="img-container" id="{{ img_file[1:] }}">
         <img src="{{ img_file }}" loading="lazy">
         <form hx-post="/" hx-indicator="closest div">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
             <button class="fav" type="submit" name="fav_img" value="{{ img_file[1:] }}" onclick="hideImage('{{ img_file[1:] }}')">Favorite</button>
             <button class="delete" type="submit" name="delete_img" value="{{ img_file[1:] }}" onclick="hideImage('{{ img_file[1:] }}')">Delete</button>
         </form>
