@@ -45,7 +45,7 @@ For example:
 ```python imgserve.py ./generated_images ./curated_images```
 
 
-Open your browser and navigate to `http://localhost:8666/` to start curating your images.
+Open your browser and navigate to `http://localhost:8667/` to start curating your images.
 
 ## Contributing
 
@@ -56,3 +56,5 @@ Contributions are welcome! If you have suggestions, bug reports, or enhancements
 MIT License. See [LICENSE](./LICENSE) for more information.
 
 
+
+The server binds to loopback with the debugger disabled. Keep it local: it can move and delete files and does not provide remote authentication. Mutation requests require the session CSRF token.
